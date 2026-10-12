@@ -1,0 +1,13 @@
+# Normalise line endings: keep LF in the repository, whatever the editor writes.
+* text=auto eol=lf
+
+# Binary assets — never touch these.
+*.png binary
+*.ico binary
+*.jpg binary
+*.exe binary
+*.msi binary
+
+# Mark generated files so GitHub folds them in diffs / language stats.
+Cargo.lock linguist-generated
+package-lock.json linguist-generated

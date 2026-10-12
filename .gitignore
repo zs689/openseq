@@ -1,0 +1,35 @@
+# Rust
+/target
+/src-tauri/target
+**/*.rs.bk
+
+# Tauri regenerates these on every build
+/src-tauri/gen/schemas
+
+# Node
+node_modules
+.node_modules_broken
+dist
+dist-ssr
+*.local
+
+# Toolchains installed inside the workspace (kept out of git)
+/.rust
+/.mingw
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

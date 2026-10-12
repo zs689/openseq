@@ -1,0 +1,35 @@
+[package]
+name = "openseq"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "OpenSeq — a Logseq-compatible, local-first outliner built with Rust + TypeScript + Tauri."
+
+[lib]
+name = "openseq_lib"
+# Desktop builds only need an rlib. The Tauri template also lists
+# "staticlib"/"cdylib" for the iOS/Android targets, but on Windows the cdylib
+# step makes GNU ld emit an export table for the whole dependency graph and it
+# fails with "export ordinal too large: 97673". Add them back only when you
+# start building for mobile.
+crate-type = ["lib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+# Not used by our build script — it is here purely to activate the `std`
+# feature of `indexmap 1.9`, which is required by `schemars 0.8` (a dependency of
+# tauri-build) but never enabled by it. indexmap 1.9 has no `default` feature and
+# its build script probes the target for `std` when the feature is absent; on a
+# self-contained GNU toolchain that probe reports false, and schemars then fails
+# to compile with E0107 (`Map<K, V>` loses its defaulted type parameter).
+# See docs/DELIVERY.md.
+indexmap = { version = "1.9", default-features = false, features = ["std"] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+serde.workspace = true
+serde_json.workspace = true
+logseq-core = { path = "../crates/core" }
+notify = "6"

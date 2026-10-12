@@ -1,0 +1,12 @@
+[package]
+name = "logseq-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Pure-Rust domain core for the Logseq-compatible outliner: graph model, Logseq-dialect markdown parser/serializer, backlinks and full-text search. Deliberately free of any Tauri/UI dependency so it can be compiled and tested on its own, and deliberately dependency-light so it builds with a bare Rust toolchain (no C toolchain, no network beyond crates.io)."
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+regex.workspace = true
